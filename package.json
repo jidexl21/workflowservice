@@ -1,0 +1,15 @@
+{
+  "name": "workflowservice",
+  "version": "1.0.0",
+  "description": "Workflow Service UI test",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "workflowservice"
+  },
+  "author": "jidexl21@gmail.com",
+  "license": "ISC"
+}
