@@ -8,8 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "workflowservice"
+    "url": "https://github.com/jidexl21/workflowservice.git"
   },
   "author": "jidexl21@gmail.com",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "jqGrid": "^5.3.2",
+    "jquery": "^3.3.1",
+    "jsgrid": "^1.5.3"
+  }
 }
