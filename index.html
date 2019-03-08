@@ -5,15 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="jidexl21@gmail.com">
-    <title>Starter Template · Bootstrap</title>
+    <title>Approval Workflow Demo Interface</title>
 
     <!-- Bootstrap core CSS -->
     <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet"/>
-    <link href="node_modules/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet"/>
     <link href="node_modules/jsgrid/dist/jsgrid.min.css" rel="stylesheet" type="text/css"/>
     <link href="node_modules/jsgrid/dist/jsgrid-theme.min.css" rel="stylesheet" type="text/css"/>
-
+    <link rel="shortcut icon" href="assets/favicon.ico" />
   
 
     <!-- Custom styles for this template -->
@@ -60,9 +58,15 @@
 </nav>
 
 <main role="main" class="container">
-  <div class="starter-template">
-    <h3>Approval Workflow User Interface</h3>
-    <p class="lead">Interface for Approval Workflow Testing</p>
+  <div class="row">
+    <div class="col-sm-3">
+      <div class="btn-group"></div>
+
+    </div>
+    <div class="col-sm-9">
+        <h3>Approval Workflow User Interface</h3>
+        <p class="lead">Interface for Approval Workflow Testing</p>
+    </div>
   </div>
   <div class="row">
       <div class="col-sm-3" id="listing">
@@ -75,14 +79,9 @@
       </div>
       <div class="col-sm-9">
           <div class="tab-content">
-              <div id="pending" class="tab-pane active" role="tabpanel">
-                <table>
-                  <thead></thead>
-                  <tbody></tbody>
-                </table>
-              </div>
-              <div id="approved" class="tab-pane" role="tabpanel"><zing-grid></zing-grid></div>
-              <div id="rejected" class="tab-pane" role="tabpanel">This is another tab TAB</div>
+              <div id="pending" class="tab-pane active" role="tabpanel"></div>
+              <div id="approved" class="tab-pane" role="tabpanel"></div>
+              <div id="rejected" class="tab-pane" role="tabpanel"></div>
               <div id="processes" class="tab-pane" role="tabpanel"><span class="glyphicon glyphicon-hourglass">...</span></div>
 
           </div>
@@ -94,6 +93,7 @@
     <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="node_modules/formy/formy-min.js"></script>
     <script src="node_modules/jsgrid/dist/jsgrid.min.js"></script>
+    <script src="assets/js/jsGrid.extensions.js"></script>
     <script src="assets/js/code.js"></script>
     <script src="assets/js/view.js"></script>
 
