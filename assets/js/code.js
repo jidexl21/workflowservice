@@ -17,22 +17,18 @@ var Role =()=>{
 var AllRoles = () =>{
 
 }
-var AprovalRule = () =>{
-    this.ID,
-    this.FunctionID, 
-    this.combinationNo, 
-    this.RoleID,
-    this.ApproverCount,
-    this.RuleStatus, 
-    this.PageUrl, 
-    this.Level
-}
+
 var ApprovalActions = ()=> {
     this.Get =()=>{
-        JSON.parse(localStorage.getItem("ApprovalActions"))
+        var itm = JSON.parse(localStorage.getItem("ApprovalActions")); 
+        return (itm)?itm:[];
     }
     this.Add =(actn)=>{
         actn.Validate();
+    }
+    this.Save = (itm)=>{
+        var all = this.Get(); all.push(itm);
+        localStorage.setItem("ApprovalActions", JSON.stringify(this.Get()))
     }
 }
 var ApprovalAction = ()=>{
@@ -46,8 +42,7 @@ var ApprovalAction = ()=>{
     this.UserID,
     this.ApprovedDate, 
     this.Save =()=>{
-        var db = ApprovalActions.Get().push(this);
-        localStorage.setItem("ApprovalActions",JSON.stringify(db))
+        var db = (new ApprovalActions).Save(this);
     }, 
     this.Validate =()=>{
         
@@ -61,15 +56,32 @@ var ApprovalAction = ()=>{
     };  
 }
 
-var AllRules = ()=>{
+var AllRules = function(){
     this.Get = (id)=> {
-     (id) ? JSON.parse(localStorage.getItem("allRules")).filter((rule)=>{
+    var rawList = localStorage.getItem("AllRules"); 
+    var list = (rawList)?JSON.parse(rawList):[];
+     return (id) ? list.filter((rule)=>{
          return rule.ID == id;
      })
-     :JSON.parse(localStorage.getItem("allRules")); ; 
+     : list ; 
     }
-    return JSON.parse(localStorage.getItem("allRules"));
+    this.Save =()=>{
+        var curset = this.Get(); currset.push(rule); 
+        localstorage.setItem("AllRules",JSON.stringify(currset)); 
+    }
  }; 
+
+ var ApprovalRule = function (){
+    this.ID ="",
+    this.FunctionID ="", 
+    this.combinationNo ="", 
+    this.RoleID ="",
+    this.ApproverCount = 0,
+    this.RuleStatus ="", 
+    this.PageUrl ="", 
+    this.Level ="",
+    this.CreatedDate = Date();
+}
 var AllProcesses = function(){
     this.Get = (criteria)=>{
         var pr = localStorage.getItem("AllProcesses"); 
@@ -107,15 +119,13 @@ var FlowProcess = function(){
     this.Description = "";
     this.RuleList = []; 
     this.Save = ()=>{
-        var plist = new AllProcesses()
-        plist.Save(this)
+        (new AllProcesses()).Save(this)
     }
     this.Update = (itm)=>{
         (new AllProcesses()).Get(itm.ID).SaveOrUpdate(this)
     }
     this.Get = ()=>{
-        var d = new AllProcesses(); 
-        return d.Get(); 
+        return (new AllProcesses()).Get(); 
     }
     this.Validate = (allowEmpty) =>{
         if (!this.ID){this.ID = "PR_"+ Math.floor(Math.random()*1000000000000).toString(16)};
@@ -141,7 +151,9 @@ var ApprovalItems = function(){
         });
     }
     this.Save = (Itm)=>{
-        this.Get().push(Itm); 
+        var itms = this.Get()
+        itms.push(Itm); 
+        localStorage.setItem("ApprovalItems", JSON.stringify(itms));
     }
 }
 
